@@ -15,11 +15,14 @@ class ShopController extends Controller
 {
     public function index()
     {
-        if (auth()->user()->hasRole('admin')) {
-            return redirect()->route('admin.dashboard');
-        }
-        if (auth()->user()->hasRole('shipper')) {
-            return view('shipper.index',['admins' => User::all()]);
+        if (auth()->user() != null)
+        {
+            if (auth()->user()->hasRole('admin')) {
+                return redirect()->route('admin.dashboard');
+            }
+            if (auth()->user()->hasRole('shipper')) {
+                return view('shipper.index',['admins' => User::all()]);
+            }
         }
         $carousels = Carousel::latest()->take(3)->get();
         $newProducts = Product::inRandomOrder()->with('productImage')->take(24)->get();
@@ -30,11 +33,14 @@ class ShopController extends Controller
     }
     public function show($id)
     {
-        if (auth()->user()->hasRole('admin')) {
-            return redirect()->route('admin.dashboard');
-        }
-        if (auth()->user()->hasRole('shipper')) {
-            return view('shipper.index',['admins' => User::all()]);
+        if (auth()->user() != null)
+        {
+            if (auth()->user()->hasRole('admin')) {
+                return redirect()->route('admin.dashboard');
+            }
+            if (auth()->user()->hasRole('shipper')) {
+                return view('shipper.index',['admins' => User::all()]);
+            }
         }
         $product = Product::where('id', $id)->with('productImage','category','attributes')->first();
         $product->image = $product->productImage->first();
@@ -51,12 +57,14 @@ class ShopController extends Controller
 
     public function catalog(Request $request)
     {
-
-        if (auth()->user()->hasRole('admin')) {
-            return redirect()->route('admin.dashboard');
-        }
-        if (auth()->user()->hasRole('shipper')) {
-            return view('shipper.index',['admins' => User::all()]);
+        if (auth()->user() != null)
+        {
+            if (auth()->user()->hasRole('admin')) {
+                return redirect()->route('admin.dashboard');
+            }
+            if (auth()->user()->hasRole('shipper')) {
+                return view('shipper.index',['admins' => User::all()]);
+            }
         }
         //get random sub categories
 

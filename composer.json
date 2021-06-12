@@ -53,6 +53,7 @@
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
+	"disable-tls": true,
     "scripts": {
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",

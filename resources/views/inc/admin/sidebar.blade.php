@@ -97,6 +97,9 @@
         <a class="collapse-item" href="{{route('carousel.index')}}">
           <span>Manage Carousel</span>
         </a>
+        <a class="collapse-item" href="{{route('carousel.index')}}">
+          <span>Manage Warehouses</span>
+        </a>
       </div>
     </div>
   </li>
